@@ -20,7 +20,8 @@ import {
     DatePicker,
     Table,
     TableColumn,
-    Pagination
+    Pagination,
+    Dialog
 } from 'element-ui'
 
 Vue.use(Button)
@@ -43,5 +44,6 @@ Vue.use(DatePicker)
 Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Pagination)
+Vue.use(Dialog)
 //把Message挂载到原型对象上
 Vue.prototype.$message = Message;

@@ -23,7 +23,7 @@
           <el-menu
             background-color="#ffffff"
             active-text-color="#248bf2"
-            :unique-opened="true"
+           
             router
             :default-active="paths"
           >

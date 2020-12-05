@@ -1,6 +1,6 @@
 <template>
   <div class="extensionQimao">
-    <h1>推广项目-七猫</h1>
+    <h1>数据统计-七猫</h1>
     <!-- 卡片视图区域 -->
     <el-card class="card">
       <el-row :gutter="20">
@@ -49,7 +49,6 @@
         <el-table-column prop="parentName" label="直属上级名称" width="240">
         </el-table-column>
       </el-table>
-      
     </el-card>
   </div>
 </template>
@@ -62,13 +61,15 @@ export default {
       search: "",
       datevalue1: "",
       datevalue2: "",
-      // 页码
-      code: "",
-      etime: "",
-      stime: "",
-      pageRequest: {
-        page: 1,
-        pagesize: 50,
+      // 七猫推广码请求获取数据的参数
+      params: {
+        code: "",
+        etime: "",
+        stime: "",
+        pageRequest: {
+          page: 1,
+          pagesize: 50,
+        },
       },
     };
   },
@@ -100,7 +101,7 @@ export default {
 .and {
   padding: 0 10px;
 }
-.table{
+.table {
   margin-bottom: 30px;
 }
 </style>

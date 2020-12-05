@@ -42,8 +42,7 @@ export default {
     but(){
       this.$refs.formref.validate(async (valid) =>{ //保存
         if(!valid) return  
-        const {data : res } = await this.$http.post('/api/pc/login/login', )
-        
+        const {data : res } = await this.$http.post('/api/pc/login/login',qs.stringify(this.query))
         // 判断请求是否发送成功
         if(res.responseCode !== 200){
           return this.$message.error('请求发送失败')
