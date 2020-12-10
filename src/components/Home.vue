@@ -8,11 +8,11 @@
           <div class="marshalling">
             <span>
               <i class="iconfont">&#xe6a3;</i>
-              测试账号
+              {{userName}}
             </span>
-            <span @click="exit">退出登录</span>
+            <span @click="exit">退出</span>
           </div>
-          <div class="newsDiv"><span>新闻公告</span></div>
+          <div class="newsDiv" @click="newList"><span>新闻公告</span></div>
         </div>
       </el-header>
       <!-- container-->
@@ -66,19 +66,24 @@ export default {
   data() {
     return {
       paths: "/extensionQimao",
+      userName:''
     };
   },
   created() {
     // 获取初始话列表数据
     this.getMenuData();
-    // 在初始化的时候赋值 保证点击刷新的时候刷新的是当前页面
+    this.getUserName()
   },
   mounted() {
+    // 在初始化的时候赋值 保证点击刷新的时候刷新的是当前页面
     if (window.sessionStorage.getItem("path") == null) return;
     this.paths = window.sessionStorage.getItem("path");
   },
   methods: {
     ...mapActions(["getMenuData"]),
+    getUserName(){
+      this.userName =  window.sessionStorage.getItem('name')
+    },
     // 退出功能
     exit() {
       // 移除token值
@@ -90,6 +95,10 @@ export default {
       window.sessionStorage.setItem("path", link);
       this.paths = link;
     },
+    // newList 新闻组件事件
+    newList(){
+      this.$router.push('/Newslist')
+    }
   },
   computed: {
     ...mapState(["menuList"]),
@@ -124,6 +133,7 @@ export default {
     margin-top: 19px;
     margin-left: 20px;
     color: white;
+    font-size: 13px;
   }
 }
 .newsDiv {

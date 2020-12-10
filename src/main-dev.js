@@ -7,8 +7,8 @@ import './plugins/element.js'
 import './assets/css/global.css'
 // 导入icon图标
 import './assets/icons/icon/iconfont.css'
-
-
+// 导入剪切板
+import VueClipboard from 'vue-clipboard2'
 // 导入axios 包
 import axios from 'axios'
 axios.defaults.baseURL='/api'
@@ -22,8 +22,9 @@ Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
 
+Vue.use(VueClipboard)
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
 }).$mount('#app')

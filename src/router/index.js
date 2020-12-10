@@ -14,8 +14,10 @@ import WithdrawSet from '../components/management/WithdrawSet.vue'
 import LxCourse from '../components/management/LxCourse.vue'
 //导入修改密码组件
 import Pwd from '../components/management/Pwd.vue'
-
-
+// 导入新闻组件
+import Newslist from '../components/NewsList.vue'
+// 导入新闻子组件
+import NewsDetails from '../components/newsDetails.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -30,9 +32,11 @@ const routes = [
       { path: '/StatisticsQimao', component: StatisticsQimao },
       { path: '/WithdrawSet', component: WithdrawSet },
       { path: '/LxCourse', component: LxCourse },
-      { path: '/Pwd', component: Pwd }
+      { path: '/Pwd', component: Pwd },
+      { path: '/NewsList', component: Newslist},
+      {path: '/NewsDetails', component: NewsDetails} 
     ]
-  }
+  },
 ]
 
 

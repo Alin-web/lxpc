@@ -21,7 +21,11 @@ import {
     Table,
     TableColumn,
     Pagination,
-    Dialog
+    Dialog,
+    Image,
+    Select,
+    Option,
+    Tooltip,
 } from 'element-ui'
 
 Vue.use(Button)
@@ -45,5 +49,10 @@ Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Pagination)
 Vue.use(Dialog)
+Vue.use(Image)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Tooltip)
+
 //把Message挂载到原型对象上
 Vue.prototype.$message = Message;

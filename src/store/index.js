@@ -3,41 +3,31 @@ import Vuex from "vuex";
 import axios from "axios";
 
 Vue.use(Vuex);
-
+// vuex 应用场景:多个组件共享数据或者是跨组件传递数据 勿在vuex中发送数据请求
 export default new Vuex.Store({
   state: {
     menuList: [],
-    /* //七猫推广码列表
-    PromotionCode: [], */
-    // 数据统计 /api/pc/datareport/qm/list
-    Statistics: [],
+    /* userNum:'', */
   },
   mutations: {
     // 菜单栏数据
     menuData(state, res) {
       state.menuList = res;
     },
-    // 数据统计
-    statisticsData(state, res) {
-      state.Statistics = res;
-    },
+    //用户账号 页面刷新的时候vuex的数据会丢失 
+    /* num(state,option){
+      // 因为state中userNmu是字符串属性 所以下面赋值的时候无法把数字赋值给字符串 需要转化赋值
+      state.userNum = option + '';
+      console.log(option);
+    } */
   },
+  // 异步请求
   actions: {
     // 请求左侧菜单栏数据
     async getMenuData(context) {
       const { data: res } = await axios.get("/api/pc/menus/list");
       if (res.responseCode !== 200) return;
       context.commit("menuData", res.body);
-    },
-	//推广项目 七猫
-	
-    // 数据统计 七猫
-    async getStatisticsData(context, pageRequest) {
-      const { data: res } = await axios.get("/api/pc/datareport/qm/list");
-      if (res.responseCode !== 200) return;
-      // context.commit("a", b); a是mutations中的方法名称 b 是传递到a方法的参数
-      context.commit("statisticsData", res.body.list);
-      /* console.log(res); */
     },
   },
   modules: {},

@@ -6,10 +6,10 @@
       </el-row>
       <el-form ref="formref" :model="query" class="form" :rules="rules">
         <el-form-item class="item" prop="mobile">
-          <el-input type="text" v-model="query.mobile" placeholder="请输入账号"></el-input>
+          <el-input type="text" clearable v-model="query.mobile" placeholder="请输入账号"></el-input>
         </el-form-item>
         <el-form-item class="item" prop="passwd">
-          <el-input type="password" v-model="query.passwd" placeholder="请输入密码"></el-input>
+          <el-input type="password" show-password v-model="query.passwd" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" class="loginBut" @click="but">登录</el-button>
@@ -21,6 +21,7 @@
 </template>
 <script>
 import qs from 'qs'
+
 export default {
   data() {
     return {
@@ -39,6 +40,7 @@ export default {
     };
   },
   methods: {
+    
     but(){
       this.$refs.formref.validate(async (valid) =>{ //保存
         if(!valid) return  
@@ -48,8 +50,12 @@ export default {
           return this.$message.error('请求发送失败')
         }
         this.$message.success('请求发送成功')
-        // 把返回的token值保存起来
+        console.log(res);
+        // 把返回的token值  账号 账号名字 保存起来 
         window.sessionStorage.setItem('token',res.body.token);
+        window.sessionStorage.setItem('mobile',res.body.mobile);
+        window.sessionStorage.setItem('name',res.body.name);
+        
         // 跳转页面
         this.$router.push('/home')
       })
